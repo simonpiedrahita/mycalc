@@ -39,6 +39,27 @@ export default function App() {
   //
   let mymess = "Este es el pie de la GUI";
   let mimage = "cactual.jpg"
+let calculate = (operator)=>{
+  let mresult=0;
+  let mvalue1=parseFloat(value1);
+  let mvalue2=parseFloat(value2);
+  switch(operator){
+    case "+":
+      mresult = mvalue1 + mvalue2;
+      break;
+    case "-":
+      mresult= mvalue1 -mvalue2;
+      break;
+    case"*":
+      mresult=mvalue1*mvalue2;
+      break;
+    case"/":
+      mresult = mvalue1 / mvalue2
+      break;
+  }//case end
+  setResult(mresult);//actualizando la variable de estado result con los valores operados en el break
+}
+
   return (
     <View style={styles.container}>
       <Banner imagename={mimage}></Banner>
@@ -66,15 +87,13 @@ export default function App() {
           <Button 
               icon="plus" 
               mode="contained" 
-              onPress={() => {
-                setResult(parseFloat(value1) + parseFloat(value2))  
-              }}>  
+              onPress={() => {calculate("+")}}>  
             Sumar
           </Button>
           <Button 
               icon="minus" 
               mode="contained" 
-              onPress={() => console.log('Pressed')}>
+              onPress={() => {calculate("-")}}>
             Restar
           </Button>
         </View>
@@ -82,13 +101,13 @@ export default function App() {
           <Button 
               icon="multiplication" 
               mode="contained" 
-              onPress={() => console.log('Pressed')}>
+              onPress={() => calculate("*")}>
             Multiplicar
           </Button>
           <Button 
               icon="division" 
               mode="contained" 
-              onPress={() => console.log('Pressed')}>
+              onPress={() => calculate("/")}>
             Dividir
           </Button>
         </View>
