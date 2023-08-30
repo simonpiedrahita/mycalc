@@ -1,29 +1,3 @@
-/* import { StyleSheet, Text, View } from 'react-native';
-import Banner from './components/Banner';
-import Footer from './components/Footer';
-import {styles, myimage} from './assets/styles/styles1'
-import { PaperProvider } from 'react-native-paper';
-
-export default function App() {
-  let mymess = "Este es el pie de la GUI";
-  return (
-    <View style={styles.container}>
-      <Banner title="Banner" subtitle="Imagen"></Banner>
-      <Text style={[styles.texts,{fontWeight:'bold',color:'blue'}]}>Mi Calculadora Básica</Text>
-      <Text style={{color:'gray',backgroundColor:'black'}}>Calculando...</Text>
-      <Footer message={mymess}/>
-    </View>
-    <View>
-
-    </View>
-    
-    
-  );
-
-}
- */
-
-
 import { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
@@ -82,7 +56,7 @@ let calculate = (operator)=>{
           left={<TextInput.Icon icon="calculator" />}
         />
         <Text>Resaultado</Text>
-        <Text>{result}</Text>
+        <Text>{parseFloat(result).toFixed(1)}</Text> {/* aca se convierte a entero y se le fija los decimales a 1 */}
         <View style={{ flexDirection: 'row', marginTop: 20 }}>
           <Button 
               icon="plus" 
@@ -115,7 +89,11 @@ let calculate = (operator)=>{
           <Button 
               icon="close-circle-outline" 
               mode="contained" 
-              onPress={() => console.log('Pressed')}>
+              onPress={() =>{
+                 setValue1(" ")
+                 setValue2(" ")
+                 setResult(" ")              
+              }}>
             Limpiar
           </Button>
         </View>
@@ -127,3 +105,28 @@ let calculate = (operator)=>{
     </View>
   );
 }
+
+/* import { StyleSheet, Text, View } from 'react-native';
+import Banner from './components/Banner';
+import Footer from './components/Footer';
+import {styles, myimage} from './assets/styles/styles1'
+import { PaperProvider } from 'react-native-paper';
+
+export default function App() {
+  let mymess = "Este es el pie de la GUI";
+  return (
+    <View style={styles.container}>
+      <Banner title="Banner" subtitle="Imagen"></Banner>
+      <Text style={[styles.texts,{fontWeight:'bold',color:'blue'}]}>Mi Calculadora Básica</Text>
+      <Text style={{color:'gray',backgroundColor:'black'}}>Calculando...</Text>
+      <Footer message={mymess}/>
+    </View>
+    <View>
+
+    </View>
+    
+    
+  );
+
+}
+ */
